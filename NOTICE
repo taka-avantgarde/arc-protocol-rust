@@ -1,0 +1,25 @@
+Arc Protocol — Cryptographic Core
+Copyright (C) 2026 Atlas Associates Inc.
+
+This crate is free software: you can redistribute it and/or modify it
+under the terms of the GNU Affero General Public License v3.0 as published
+by the Free Software Foundation. See the LICENSE file for the full text.
+
+--------------------------------------------------------------------------
+
+This crate links and builds upon:
+
+  libsignal (libsignal-protocol)
+  https://github.com/signalapp/libsignal
+  Copyright (C) Signal Messenger, LLC
+  Licensed under AGPL-3.0-only.
+
+The Signal Protocol — X3DH, PQXDH (ML-KEM-1024), the Double Ratchet, and
+Sender Keys — was designed and is maintained by Signal Messenger, LLC
+(formerly Open Whisper Systems). This crate is an independent integration
+that delegates all cryptographic operations to libsignal. It is NOT
+affiliated with, sponsored by, or endorsed by Signal Messenger, LLC.
+
+Because this crate links libsignal (AGPL-3.0), it is itself distributed
+under AGPL-3.0. The remainder of the Arc application is a separate work and
+is not part of this crate.

@@ -1,0 +1,26 @@
+# protoc path for Xcode build environment (libsignal requires protobuf compiler)
+[env]
+PROTOC = "/opt/homebrew/bin/protoc"
+# Fix ___chkstk_darwin undefined symbol on iOS
+# pqcrypto-kyber's C code has large stack frames that trigger stack probing,
+# but ___chkstk_darwin is not available on iOS
+CFLAGS_aarch64_apple_ios = "-fno-stack-check -mios-version-min=16.0"
+CFLAGS_aarch64-apple-ios = "-fno-stack-check -mios-version-min=16.0"
+
+[target.aarch64-apple-ios]
+rustflags = ["-C", "link-arg=-mios-version-min=16.0"]
+
+# 16KB page size support for Google Play (required by May 31, 2026)
+# See: https://developer.android.com/guide/practices/page-sizes
+
+[target.aarch64-linux-android]
+rustflags = ["-C", "link-arg=-Wl,-z,max-page-size=16384"]
+
+[target.armv7-linux-androideabi]
+rustflags = ["-C", "link-arg=-Wl,-z,max-page-size=16384"]
+
+[target.x86_64-linux-android]
+rustflags = ["-C", "link-arg=-Wl,-z,max-page-size=16384"]
+
+[target.i686-linux-android]
+rustflags = ["-C", "link-arg=-Wl,-z,max-page-size=16384"]
